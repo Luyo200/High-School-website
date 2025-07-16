@@ -1,0 +1,286 @@
+/* General Page Layout */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+  margin: 0;
+  padding: 0;
+  color: #2a4365;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header */
+header {
+  text-align: center;
+  background-color: #2a4365;
+  color: white;
+  padding: 25px 20px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 900px;
+  border-radius: 0 0 20px 20px;
+  margin-bottom: 20px;
+}
+
+/* Container */
+.container {
+  width: 90%;
+  max-width: 700px;
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  margin-bottom: 60px;
+  box-sizing: border-box;
+}
+
+/* Form Styles */
+label {
+  font-weight: 600;
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 6px;
+}
+
+input, select, textarea, button {
+  width: 100%;
+  padding: 14px 16px;
+  margin-top: 12px;
+  margin-bottom: 24px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1.8px solid #cbd5e1;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  box-sizing: border-box;
+  color: #2a4365;
+  font-family: inherit;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #2a4365;
+  box-shadow: 0 0 6px #2a4365a8;
+}
+
+/* Button Styles */
+button {
+  background-color: #2a4365;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(26, 46, 79, 0.65);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  background-color: #1a2e4f;
+  box-shadow: 0 8px 18px rgba(26, 46, 79, 0.8);
+}
+
+/* Subjects Section */
+.subjects {
+  background: #edf2f7;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  color: #2a4365;
+  box-shadow: inset 0 2px 8px rgba(42, 67, 101, 0.1);
+  text-align: center;
+}
+
+/* Success & Error Messages */
+.success {
+  color: #38a169;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-top: -12px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.error {
+  color: #e53e3e;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-top: -12px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* Apply Now Banner */
+.apply-now-banner {
+  background: linear-gradient(90deg, #2a4365, #3182ce);
+  color: white;
+  font-size: 2.2rem;
+  font-weight: 900;
+  text-align: center;
+  padding: 25px 15px;
+  margin: 40px auto 20px;
+  max-width: 900px;
+  border-radius: 15px;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 8px 25px rgba(50, 70, 140, 0.4);
+  transition: background 0.3s, transform 0.1s;
+}
+
+.apply-now-banner:hover,
+.apply-now-banner:focus {
+  background: linear-gradient(90deg, #1a2e4f, #2c5282);
+  outline: none;
+}
+
+.apply-now-banner:active {
+  transform: scale(0.98);
+}
+
+/* Streams Overview */
+.streams {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 900px;
+  margin: 40px auto;
+  flex-wrap: wrap;
+}
+
+.stream-card {
+  background: #e0f2fe;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(12, 74, 110, 0.15);
+  width: 280px;
+  padding: 20px;
+  text-align: center;
+  color: #0c4a6e;
+  transition: transform 0.3s;
+}
+
+.stream-card:hover {
+  transform: translateY(-8px);
+}
+
+.stream-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.stream-card h3 {
+  margin-bottom: 12px;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.stream-card p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.stream-card .read-more-btn {
+  background: linear-gradient(135deg, #2a4365, #3182ce);
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.stream-card .read-more-btn:hover {
+  background: linear-gradient(135deg, #1a2e4f, #2c5282);
+  transform: translateY(-2px);
+}
+
+/* Modal Overlay */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  display: flex;
+  opacity: 1;
+}
+
+/* Modal Content */
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 10px 30px rgba(42, 67, 101, 0.2);
+  position: relative;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease-out;
+}
+
+.modal.show .modal-content {
+  transform: translateY(0);
+}
+
+/* Modal Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.6rem;
+  color: #2a4365;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #1a2e4f;
+}
+
+/* Modal Text */
+#modalTitle {
+  margin-bottom: 1rem;
+  color: #0c4a6e;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+#modalText {
+  color: #333;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Admin Button */
+.admin-btn {
+  display: block;
+  margin: 30px auto;
+  padding: 10px 20px;
+  background-color: #004080;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.admin-btn:hover {
+  background-color: #0066cc;
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Application Form - Bright Future High School</title>
+  <link rel="stylesheet" href="Style.css" />
+  <style>
+    .success { color: green; margin-top: 15px; font-weight: bold; }
+    .error { color: red; margin-top: 15px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Apply to Bright Future High School</h1>
+  </header>
+
+  <div class="container">
+    <h2>Application Form</h2>
+
+    <form id="applicationFormElement" novalidate>
+      <label for="firstName">Learner's Name:</label>
+      <input type="text" id="firstName" name="firstName" placeholder="Enter learner's first name" required />
+
+      <label for="surname">Surname:</label>
+      <input type="text" id="surname" name="surname" placeholder="Enter learner's surname" required />
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email address" required />
+
+      <label for="idNumber">ID Number:</label>
+      <input type="text" id="idNumber" name="idNumber" placeholder="Enter ID number" required pattern="\d{13}" title="13 digit South African ID number" />
+
+      <label for="currentGrade">Current Grade:</label>
+      <select id="currentGrade" name="currentGrade" required>
+        <option value="">-- Select current grade --</option>
+        <option value="Grade 8">Grade 8</option>
+        <option value="Grade 9">Grade 9</option>
+        <option value="Grade 10">Grade 10</option>
+        <option value="Grade 11">Grade 11</option>
+        <option value="Grade 12">Grade 12</option>
+      </select>
+
+      <label for="gradeApplying">Grade Applying For:</label>
+      <select id="gradeApplying" name="gradeApplying" required>
+        <option value="">-- Select grade applying for --</option>
+        <option value="Grade 8">Grade 8</option>
+        <option value="Grade 9">Grade 9</option>
+        <option value="Grade 10">Grade 10</option>
+        <option value="Grade 11">Grade 11</option>
+        <option value="Grade 12">Grade 12</option>
+      </select>
+
+      <label for="stream">Stream Applying For:</label>
+      <select id="stream" name="stream" onchange="showStreamDetails()" required>
+        <option value="">-- Select Stream --</option>
+        <option value="science">Mathematics and Science Stream</option>
+        <option value="accounting">Mathematics and Accounting Stream</option>
+        <option value="humanities">Mathematical Literacy and Humanities Stream</option>
+      </select>
+
+      <div class="subjects" id="subjects">
+        <strong>Subjects will appear here after selecting a stream.</strong>
+      </div>
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" min="10" max="25" placeholder="Enter learner's age" required />
+
+      <label for="learnerNumber">Learner's Contact Number:</label>
+      <input type="tel" id="learnerNumber" name="learnerNumber" placeholder="Enter learner's phone number" pattern="[0-9]{10}" title="Enter 10 digit phone number" required />
+
+      <label for="alternativeNumber">Alternative Contact Number:</label>
+      <input type="tel" id="alternativeNumber" name="alternativeNumber" placeholder="Enter alternative phone number" pattern="[0-9]{10}" title="Enter 10 digit phone number" />
+
+      <label for="homeNumber">Home Number:</label>
+      <input type="tel" id="homeNumber" name="homeNumber" placeholder="Enter home phone number" pattern="[0-9]{10}" title="Enter 10 digit phone number" />
+
+      <label for="address">Home Address:</label>
+      <textarea id="address" name="address" placeholder="Enter home address" rows="3" required></textarea>
+
+      <button type="submit">Submit Application</button>
+    </form>
+
+    <p class="success" id="successMessage"></p>
+    <p class="error" id="errorMessage"></p>
+  </div>
+
+  <footer>
+    <p>&copy; 2023 Bright Future High School. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function showStreamDetails() {
+      const stream = document.getElementById("stream").value;
+      const subjectsDiv = document.getElementById("subjects");
+      let subjects = "";
+      switch (stream) {
+        case "science":
+          subjects = "Physical Science, Agricultural Science, Life Science, Mathematics, isiXhosa, English FAL, Life Orientation";
+          break;
+        case "accounting":
+          subjects = "Economics, Accounting, Business Studies, Mathematics, isiXhosa, English FAL, Life Orientation";
+          break;
+        case "humanities":
+          subjects = "History, Geography, Business Studies, isiXhosa, English FAL, Life Orientation";
+          break;
+        default:
+          subjects = "Please select a stream.";
+      }
+      subjectsDiv.innerHTML = `<strong>Subjects:</strong> ${subjects}`;
+    }
+
+    document.getElementById("applicationFormElement").addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const form = event.target;
+      const successMessage = document.getElementById("successMessage");
+      const errorMessage = document.getElementById("errorMessage");
+      successMessage.textContent = "";
+      errorMessage.textContent = "";
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const applicationData = {
+        firstName: form.firstName.value.trim(),
+        surname: form.surname.value.trim(),
+        email: form.email.value.trim(),
+        idNumber: form.idNumber.value.trim(),
+        currentGrade: form.currentGrade.value,
+        gradeApplying: form.gradeApplying.value,
+        stream: form.stream.value,
+        age: form.age.value,
+        learnerNumber: form.learnerNumber.value.trim(),
+        alternativeNumber: form.alternativeNumber.value.trim(),
+        homeNumber: form.homeNumber.value.trim(),
+        address: form.address.value.trim()
+      };
+
+      try {
+        const response = await fetch("http://localhost:3000/apply", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(applicationData)
+        });
+
+        if (!response.ok) throw new Error(`Server error: ${response.statusText}`);
+
+        await response.json();
+
+        successMessage.textContent = "Application submitted successfully!";
+        form.reset();
+        document.getElementById("subjects").innerHTML = "<strong>Subjects will appear here after selecting a stream.</strong>";
+      } catch (error) {
+        errorMessage.textContent = "Failed to submit application. Please try again later.";
+        console.error("Submission error:", error);
+      }
+    });
+  </script>
+</body>
+</html>
