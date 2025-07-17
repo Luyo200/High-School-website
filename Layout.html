@@ -67,25 +67,29 @@
 
   <!-- Streams Overview Section -->
   <section class="streams container">
-    <div class="stream-card">
-      <img src="Pictures/th.jpg" alt="Science Stream" />
-      <h3>Mathematics and Science Stream</h3>
-      <p>Perfect for students passionate about Physics, Chemistry, Biology, and advanced Mathematics.</p>
-      <button class="read-more-btn" data-stream="science" type="button">Read More</button>
-    </div>
+  <div class="stream-card">
+    <img src="Pictures/th.jpg" alt="Science Stream" />
+    <h3>Mathematics and Science Stream</h3>
+    <p>Perfect for students passionate about Physics, Chemistry, Biology, and advanced Mathematics.</p>
+    <a class="read-more-btn" href="science.html">Read More</a>
+  </div>
 
-    <div class="stream-card">
-      <img src="Pictures/OIP.webp" alt="Accounting Stream" />
-      <h3>Mathematics and Accounting Stream</h3>
-      <p>Ideal for students interested in Economics, Accounting, Business Studies, and Mathematics.</p>
-      <button class="read-more-btn" data-stream="accounting" type="button">Read More</button>
-    </div>
+  <div class="stream-card">
+    <img src="Pictures/OIP.webp" alt="Accounting Stream" />
+    <h3>Mathematics and Accounting Stream</h3>
+    <p>Ideal for students interested in Economics, Accounting, Business Studies, and Mathematics.</p>
+    <a class="read-more-btn" href="accounting.html">Read More</a>
+  </div>
 
-    <div class="stream-card">
-      <img src="Pictures/OIP (1).webp" alt="Humanities Stream" />
-      <h3>Mathematical Literacy and Humanities Stream</h3>
-      <p>Designed for students focused on Geography, History, Religious Studies, and practical math applications.</p>
-      <button class="read-more-btn" data-stream="humanities" type="button">Read More</button>
+  <div class="stream-card">
+    <img src="Pictures/OIP (1).webp" alt="Humanities Stream" />
+    <h3>Mathematical Literacy and Humanities Stream</h3>
+    <p>Designed for students focused on Geography, History, Religious Studies, and practical math applications.</p>
+    <a class="read-more-btn" href="huminities.html">Read More</a>
+  </div>
+</section>
+
+  </a>
     </div>
   </section>
 
@@ -111,43 +115,7 @@
   </footer>
 
   <script>
-    // Stream info content
-    const streamDetails = {
-      science: {
-        title: "Mathematics and Science Stream",
-        text: `This stream focuses on Physics, Chemistry, Biology, and advanced Mathematics.
-Students will develop critical thinking and problem-solving skills essential for STEM careers.
-Subjects include Physical Science, Life Science, Mathematics, Agricultural Science, and more. 
-Students are prepared for university courses in engineering, medicine, natural sciences, and technology.`
-      },
-      accounting: {
-        title: "Mathematics and Accounting Stream",
-        text: `Ideal for students interested in business, finance, and economics.
-Core subjects include Accounting, Economics, Business Studies, and Mathematics.
-This stream prepares students for careers in accounting, finance, management, and entrepreneurship.
-Students gain practical skills in financial management, bookkeeping, and economic analysis.`
-      },
-      humanities: {
-        title: "Mathematical Literacy and Humanities Stream",
-        text: `Designed for students who want to focus on social sciences and practical math applications.
-Subjects include Geography, History, Religious Studies, Mathematical Literacy, and Life Orientation.
-This stream encourages critical analysis of society and culture, preparing students for careers in education, social work, law, and communication.
-Students learn research skills, cultural awareness, and ethical reasoning.`
-      }
-    };
-
-    // Modal elements
-    const modal = document.getElementById("modal");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalText = document.getElementById("modalText");
-    const closeBtn = document.querySelector(".close-btn");
-
-    // Open modal with fade-in and slide effect
-    function openModal(streamKey) {
-      modalTitle.textContent = streamDetails[streamKey].title;
-      modalText.textContent = streamDetails[streamKey].text;
-      modal.classList.add("show");
-    }
+  
 
     // Close modal
     function closeModal() {
