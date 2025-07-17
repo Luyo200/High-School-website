@@ -1,0 +1,128 @@
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  color: #333;
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.site-header {
+  background-color: #003366;
+  color: white;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+.site-header p {
+  margin: 5px 0 0;
+  font-size: 1rem;
+  color: #cce0ff;
+}
+
+.form-section {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-top: 30px;
+}
+
+.form-section h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #003366;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.submit-button {
+  background-color: #003366;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.submit-button:hover {
+  background-color: #0055aa;
+}
+
+.success {
+  color: green;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.subjects {
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.site-footer {
+  background-color: #003366;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 50px;
+  font-size: 0.9rem;
+}
+a.back-link {
+      display: inline-block;
+      margin-top: 40px;
+      text-decoration: none;
+      color: #004aad;
+      font-weight: 600;
+      border: 2px solid #004aad;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    a.back-link:hover {
+      background-color: #004aad;
+      color: white;
+    }
