@@ -29,7 +29,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     errorMessage.style.color = 'green';
 
     setTimeout(() => {
-      window.location.href = "application.html";
+      window.location.href = "admin.html";
     }, 1000); // 1 second delay
   } else {
     errorMessage.textContent = "Invalid email or password.";

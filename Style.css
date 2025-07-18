@@ -236,3 +236,17 @@ footer {
   text-shadow: 0 0 5px rgba(26, 42, 108, 0.5);
   text-decoration: underline;
 }
+.sign-out-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #f44336;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.sign-out-button:hover {
+  background-color: #d32f2f;
+}
