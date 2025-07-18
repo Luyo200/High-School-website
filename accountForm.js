@@ -3,15 +3,15 @@ const confirmPasswordInput = document.getElementById("confirmPassword");
 const strengthText = document.getElementById("strength-text");
 const errorMsg = document.getElementById("error-message");
 
-// Add real-time password strength checker
+// Password strength checker
 passwordInput.addEventListener("input", () => {
   const strength = getPasswordStrength(passwordInput.value);
-  strengthText.textContent = strength.label;
+  strengthText.textContent = `Strength: ${strength.label}`;
   strengthText.style.color = strength.color;
   checkPasswordMatch();
 });
 
-// Add real-time password match checker
+// Password match checker
 confirmPasswordInput.addEventListener("input", checkPasswordMatch);
 
 function checkPasswordMatch() {
@@ -20,6 +20,10 @@ function checkPasswordMatch() {
 
   if (confirmPassword && password !== confirmPassword) {
     errorMsg.textContent = "Passwords do not match.";
+    errorMsg.style.color = "red";
+  } else if (confirmPassword && password === confirmPassword) {
+    errorMsg.textContent = "Passwords match.";
+    errorMsg.style.color = "green";
   } else {
     errorMsg.textContent = "";
   }
@@ -39,32 +43,46 @@ document.getElementById("registerForm").addEventListener("submit", function (e) 
 
   if (!name || !surname || !email || !phone || !password || !confirmPassword) {
     errorMsg.textContent = "All fields are required.";
+    errorMsg.style.color = "red";
     return;
   }
 
   if (!validateEmail(email)) {
     errorMsg.textContent = "Please enter a valid email.";
+    errorMsg.style.color = "red";
     return;
   }
 
   if (!/^\d{10,}$/.test(phone)) {
     errorMsg.textContent = "Phone number must contain at least 10 digits.";
+    errorMsg.style.color = "red";
     return;
   }
 
   if (!validatePassword(password)) {
-    errorMsg.textContent = "Password does not meet the required rules.";
+    errorMsg.textContent =
+      "Password must be 8–16 characters long, include at least 1 uppercase letter, and at least 3 lowercase letters.";
+    errorMsg.style.color = "red";
     return;
   }
 
   if (password !== confirmPassword) {
     errorMsg.textContent = "Passwords do not match.";
+    errorMsg.style.color = "red";
     return;
   }
 
+  // Success
   alert("Account created successfully!");
-  // Optionally reset form or send to backend
+  errorMsg.textContent = "Redirecting to login...";
+  errorMsg.style.color = "green";
+
+  setTimeout(() => {
+    window.location.href = "login.html";
+  }, 2000);
 });
+
+// Helper functions
 
 function validateEmail(email) {
   const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -73,16 +91,13 @@ function validateEmail(email) {
 
 function validatePassword(password) {
   if (password.length < 8 || password.length > 16) return false;
-
   const upper = /[A-Z]/.test(password);
   const lower = (password.match(/[a-z]/g) || []).length >= 3;
-
   return upper && lower;
 }
 
 function getPasswordStrength(password) {
   let score = 0;
-
   if (password.length >= 8) score++;
   if (/[A-Z]/.test(password)) score++;
   if ((password.match(/[a-z]/g) || []).length >= 3) score++;
