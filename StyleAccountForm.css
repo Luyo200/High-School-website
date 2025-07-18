@@ -1,0 +1,89 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #eef2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.register-container {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 460px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.password-rules {
+  font-size: 0.85rem;
+  margin: 0.3rem 0;
+  padding-left: 1.2rem;
+  color: #555;
+}
+
+#strength-indicator {
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+#strength-text {
+  font-weight: bold;
+}
+
+button {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #28a745;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+#error-message {
+  color: red;
+  text-align: center;
+  margin-top: 1rem;
+}
+.back-link {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.back-link a {
+  text-decoration: none;
+  color: #007BFF;
+  font-size: 0.9rem;
+}
+
+.back-link a:hover {
+  text-decoration: underline;
+}
