@@ -71,6 +71,11 @@ document.getElementById("registerForm").addEventListener("submit", function (e) 
     errorMsg.style.color = "red";
     return;
   }
+  // TODO: Backend integration needed here
+  // 1. Send data to backend API for account creation (name, surname, email, phone, password).
+  // 2. Handle API response (success or errors).
+  // 3. On success: show confirmation, redirect user, or further steps.
+  // 4. On failure: display backend validation errors.
 
   // Success
   alert("Account created successfully!");

@@ -1,6 +1,9 @@
 window.addEventListener("DOMContentLoaded", () => {
   const tableBody = document.querySelector("#applicationTable tbody");
   const storedApplications = JSON.parse(localStorage.getItem("applications")) || [];
+  // Load applications from localStorage
+  // === Backend needed ===
+  // In production, you should fetch this data from a backend database (e.g., via fetch to an API endpoint).
 
   storedApplications.forEach(app => {
     const row = document.createElement("tr");
