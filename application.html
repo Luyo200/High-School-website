@@ -18,7 +18,8 @@
   <main class="container">
     <section class="form-section">
       <h2>Application Form</h2>
-      <form id="applicationFormElement" novalidate>
+      <form id="applicationFormElement" enctype="multipart/form-data" novalidate>
+        <!-- Basic Info -->
         <div class="form-group">
           <label for="firstName">Learner's Name:</label>
           <input type="text" id="firstName" name="firstName" placeholder="Enter learner's first name" required />
@@ -102,6 +103,22 @@
           <textarea id="address" name="address" rows="3" placeholder="Enter full address" required></textarea>
         </div>
 
+        <!-- Document Uploads -->
+        <div class="form-group">
+          <label for="idDocument">Certified ID Document / Certificate of Applicant:</label>
+          <input type="file" id="idDocument" name="idDocument" accept=".pdf,.jpg,.jpeg,.png" required />
+        </div>
+
+        <div class="form-group">
+          <label for="parentIdDocument">Certified ID of Parent/Guardian:</label>
+          <input type="file" id="parentIdDocument" name="parentIdDocument" accept=".pdf,.jpg,.jpeg,.png" required />
+        </div>
+
+        <div class="form-group">
+          <label for="septemberReport">September Report:</label>
+          <input type="file" id="septemberReport" name="septemberReport" accept=".pdf,.jpg,.jpeg,.png" required />
+        </div>
+
         <button type="submit" class="submit-button">Submit Application</button>
 
         <p class="success" id="successMessage"></p>
@@ -150,26 +167,12 @@
         return;
       }
 
-      const applicationData = {
-        firstName: form.firstName.value.trim(),
-        surname: form.surname.value.trim(),
-        email: form.email.value.trim(),
-        idNumber: form.idNumber.value.trim(),
-        currentGrade: form.currentGrade.value,
-        gradeApplying: form.gradeApplying.value,
-        stream: form.stream.value,
-        age: form.age.value,
-        learnerNumber: form.learnerNumber.value.trim(),
-        alternativeNumber: form.alternativeNumber.value.trim(),
-        homeNumber: form.homeNumber.value.trim(),
-        address: form.address.value.trim()
-      };
+      const formData = new FormData(form); // Handles files and text
 
       try {
         const response = await fetch("http://localhost:3000/apply", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(applicationData)
+          body: formData
         });
 
         if (!response.ok) throw new Error("Server error");
