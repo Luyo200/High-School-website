@@ -41,21 +41,15 @@ async function handleSubmit(event) {
             setTimeout(() => {
                 window.location.href = "login.html";
             }, 2000); // Redirect after 2 seconds
-        }else if (response.status === 409) {
-            const text = await response.text();
-            if (text.includes(email)) {
-                errorMessage.textContent = "An account with this email/password already exists.";
-            } else if (text.includes(password)) {
-                errorMessage.textContent = "An account with this email/password already exists..";
-            } else {
-                errorMessage.textContent = "An account with this email/password already exists.";
-            }
+        } else if (response.status === 409) {
+            // Single message for existing account restriction
+            errorMessage.textContent = "An account already exists. Only one account is allowed.";
         } else {
             errorMessage.textContent = "Registration failed. Please try again.";
         }
     } catch (error) {
         console.error("Error occurred during registration:", error);
-        errorMessage.textContent = "An account with this email/password already exists";
+        errorMessage.textContent = "An error occurred. Please try again later.";
     }
 }
 
