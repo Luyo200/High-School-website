@@ -3,6 +3,10 @@ async function handleSubmit(event) {
 
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
+    const errorMessage = document.getElementById("error-message");
+
+    // Clear previous error
+    if (errorMessage) errorMessage.textContent = "";
 
     const loginData = {
         email: email,
@@ -23,22 +27,31 @@ async function handleSubmit(event) {
         });
 
         if (!response.ok) {
-            throw new Error("Login failed");
+            if (response.status === 401) {
+                alert("Invalid email or password.");
+            } else {
+                alert("Login failed. Please try again.");
+            }
+            return;
         }
 
         const result = await response.json();
         console.log("Login successful:", result);
 
-        if(result){
+        if (result) {
             alert("Login successful! Redirecting to admin page...");
             setTimeout(() => {
                 window.location.href = "admin.html";
-            }, 3000); // 3 seconds delay
-        }
-        else{
+            }, 3000);
+        } else {
             alert("Login failed! Please check your credentials.");
         }
+
     } catch (error) {
         console.error("Error occurred during login:", error);
+        alert("Unable to connect to the server. Please try again later.");
+        if (errorMessage) {
+            errorMessage.textContent = "Server is unreachable. Please check your internet connection or try again later.";
+        }
     }
 }

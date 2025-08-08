@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Create Account</title>
   <link rel="stylesheet" href="StyleAccountForm.css">
 </head>
+
 <body>
   <div class="register-container">
 
@@ -49,11 +51,15 @@
 
       <button type="submit">Create Account</button>
       <div class="text-center mt-3">
-          <p>Already have an account? <a href="login.html">Login</a></p>
-        </div>
+        <p>Already have an account? <a href="login.html">Login</a></p>
+      </div>
       <p id="error-message"></p>
+      <p id="error-message" style="color: red; font-weight: bold;"></p>
+      <p id="strength-text" style="font-size: 14px;"></p>
+
     </form>
   </div>
   <script src="accountForm.js"></script>
 </body>
+
 </html>

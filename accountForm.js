@@ -4,7 +4,6 @@ document.getElementById("password").addEventListener("input", updatePasswordStre
 async function handleSubmit(event) {
     event.preventDefault();
 
-    // Collect form data
     const name = document.getElementById("name").value.trim();
     const surname = document.getElementById("surname").value.trim();
     const email = document.getElementById("email").value.trim();
@@ -22,9 +21,6 @@ async function handleSubmit(event) {
     }
 
     const registerData = { email, name, surname, password };
-
-    console.log("Register Data:", JSON.stringify(registerData));
-
     const baseUrl = "http://localhost:8084/addAdmin";
 
     try {
@@ -40,16 +36,17 @@ async function handleSubmit(event) {
             alert("Registration successful! Redirecting to login...");
             setTimeout(() => {
                 window.location.href = "login.html";
-            }, 2000); // Redirect after 2 seconds
+            }, 2000);
         } else if (response.status === 409) {
-            // Single message for existing account restriction
-            errorMessage.textContent = "An account already exists. Only one account is allowed.";
+            // Conflict: Only one account is allowed
+            errorMessage.textContent = "An account already exists. Only one admin account is allowed.";
         } else {
             errorMessage.textContent = "Registration failed. Please try again.";
         }
     } catch (error) {
         console.error("Error occurred during registration:", error);
-        errorMessage.textContent = "An error occurred. Please try again later.";
+        errorMessage.textContent = "Unable to connect to the server. Please check your internet or try again later.";
+        alert("Server is not responding. Please try again later.");
     }
 }
 
@@ -69,7 +66,7 @@ function getPasswordStrength(password) {
     if (/[A-Z]/.test(password)) score++;
     if ((password.match(/[a-z]/g) || []).length >= 3) score++;
     if (/\d/.test(password)) score++;
-    if (/[\W_]/.test(password)) score++; // special characters
+    if (/[\W_]/.test(password)) score++; // Special characters
 
     if (score <= 2) {
         return { label: "Weak", color: "red" };

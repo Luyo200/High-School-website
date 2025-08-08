@@ -7,7 +7,9 @@
   
 </head>
 <body>
-
+ <div class="signout-button">
+  <button onclick="signOut()">Sign Out</button>
+</div>
   <div class="tables-container">
     <!-- Students Table -->
      <div class="table-wrapper students-wrapper">
@@ -32,6 +34,7 @@
         </tbody>
       </table>
     </div>
+    
 
     <!-- Attachments Table -->
     <div class="table-wrapper attachments-wrapper">
@@ -54,7 +57,12 @@
   </div>
 
   <div id="status"></div>
-
+<script>function signOut() {
+      // Optionally clear auth/session info here
+      alert("You have been signed out.");
+      window.location.href = "index.html";
+    }</script>
   <script src="admin.js"></script>
+  
 </body>
 </html>

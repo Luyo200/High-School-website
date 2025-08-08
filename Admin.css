@@ -11,6 +11,28 @@ body {
   background-color: #f7f9fc;
   color: #333;
 }
+.header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  background-color: #f9f9f9; /* natural/light tone */
+  border-bottom: 1px solid #ccc;
+}
+
+.signout-button {
+  padding: 10px 16px;
+  background-color: #8fd1d4; /* soft neutral */
+  color: #e4d2d2;
+  border: 1px solid #151414;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.signout-button:hover {
+  background-color: #d6d6d6;
+}
+
 
 /* Header styling */
 header {
@@ -28,17 +50,7 @@ header h1 {
   font-size: 1.8rem;
 }
 
-/* Sign-out button */
-.sign-out-button {
-  background-color: #e94e4e;
-  border: none;
-  color: white;
-  padding: 10px 18px;
-  font-size: 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+
 /* Download Link column (2nd) width and wrapping */
 #attachmentsTable th:nth-child(2),
 #attachmentsTable td:nth-child(2) {
