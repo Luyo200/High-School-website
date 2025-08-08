@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Students and Attachments</title>
+  <link rel="stylesheet" href="admin.css" />
+  
+</head>
+<body>
+
+  <div class="tables-container">
+    <!-- Students Table -->
+     <div class="table-wrapper students-wrapper">
+      <h2>Student Applications</h2>
+      <table id="studentsTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>ID Number</th>
+            <th>Phone</th>
+            <th>Current Grd</th>
+            <th>Grd Applying</th>
+            <th>Stream</th>
+            <th>Address</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filled dynamically -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Attachments Table -->
+    <div class="table-wrapper attachments-wrapper">
+      <h2>Attachments</h2>
+      <table id="attachmentsTable">
+        <thead>
+          <tr>
+           
+            <th>File Name</th>
+            
+            
+            <th>Download Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filled dynamically -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="status"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+/* Reset and base */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  color: #333;
+  line-height: 1.5;
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+.site-header {
+  background-color: #003366;
+  color: white;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+.site-header p {
+  margin: 5px 0 0;
+  font-size: 1rem;
+  color: #cce0ff;
+}
+
+/* Form Section */
+.form-section {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.form-section h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #003366;
+}
+
+.form-section h3 {
+  color: #003366;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="file"],
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group input[type="file"]:focus,
+.form-group select:focus {
+  border-color: #0055aa;
+  outline: none;
+}
+
+/* File hint text */
+.file-hint {
+  font-size: 0.85em;
+  color: #666;
+  margin-top: -8px;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+/* Submit Button */
+.submit-button {
+  background-color: #003366;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover,
+.submit-button:focus {
+  background-color: #0055aa;
+  outline: none;
+}
+
+/* Success and Error Messages */
+.success {
+  color: green;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+/* Admin Login Button (fixed top right) */
+.admin-login {
+  position: fixed;
+  top: 10px;
+  right: 15px;
+  background-color: #0066cc;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  z-index: 999;
+  transition: background-color 0.3s ease;
+}
+
+.admin-login:hover,
+.admin-login:focus {
+  background-color: #004c99;
+  outline: none;
+}
+
+/* Back to Home Link */
+a.back-link {
+  display: inline-block;
+  margin-top: 40px;
+  text-decoration: none;
+  color: #004aad;
+  font-weight: 600;
+  border: 2px solid #004aad;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+a.back-link:hover,
+a.back-link:focus {
+  background-color: #004aad;
+  color: white;
+  outline: none;
+}
+
+/* Footer */
+.site-footer {
+  background-color: #003366;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 50px;
+  font-size: 0.9rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  .site-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .form-section {
+    padding: 20px;
+  }
+
+  .admin-login {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+
+  a.back-link {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+}

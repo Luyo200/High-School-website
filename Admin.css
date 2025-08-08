@@ -1,0 +1,245 @@
+/* Apply box-sizing to all elements for consistent sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* Base body styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f9fc;
+  color: #333;
+}
+
+/* Header styling */
+header {
+  background-color: #004080;
+  color: white;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+/* Sign-out button */
+.sign-out-button {
+  background-color: #e94e4e;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+/* Download Link column (2nd) width and wrapping */
+#attachmentsTable th:nth-child(2),
+#attachmentsTable td:nth-child(2) {
+  width: 15%;
+  max-width: 180px;
+  min-width: 80px;
+  white-space: normal;
+  word-wrap: break-word;
+  height: auto;
+}
+
+.sign-out-button:hover {
+  background-color: #c43a3a;
+}
+
+/* ===== Layout for side-by-side tables ===== */
+.tables-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1px;
+  padding: 2px;
+}
+
+/* Common wrapper for all tables */
+.table-wrapper {
+  background: white;
+  padding: 0px;
+  border-radius: 1px;
+  box-shadow: 0 2px 19px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
+}
+
+/* Make attachments table wrapper narrower */
+.attachments-wrapper {
+  flex: 0 0 35%;
+  max-width: 400px;
+}
+
+/* Students table wrapper takes remaining space */
+.students-wrapper {
+  flex: 1;
+}
+
+/* ===== Students Table Styling ===== */
+#studentsTable {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  min-width: 1000px;
+}
+
+/* Address column (9th) width and wrapping */
+#studentsTable th:nth-child(9),
+#studentsTable td:nth-child(9) {
+  width: 15%;
+  max-width: 200px;
+  min-width: 120px;
+  white-space: normal;
+  word-wrap: break-word;
+  height: auto;
+}
+
+#studentsTable th {
+  border: 1px solid #ddd;
+  padding: 6px 8px;
+  text-align: left;
+  word-wrap: break-word;
+  vertical-align: middle;
+  font-size: 0.9rem;
+  background-color: #004080;
+  color: white;
+  font-weight: 600;
+}
+
+#studentsTable td {
+  border: 1px solid #ddd;
+  padding: 6px 8px;
+  text-align: left;
+  word-wrap: break-word;
+  vertical-align: middle;
+  font-size: 0.9rem;
+  background-color: #fff;
+}
+
+#studentsTable tbody tr:hover {
+  background-color: #eef5ff;
+  cursor: pointer;
+}
+
+/* ===== Attachments Table Styling ===== */
+#attachmentsTable {
+  width: 10%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  min-width: 426.4px;
+}
+
+/* File Name column (1st) width and wrapping */
+#attachmentsTable th:first-child,
+#attachmentsTable td:first-child {
+  width: 20%;
+  max-width: 300px;
+  min-width: 150px;
+  white-space: normal;
+  word-wrap: break-word;
+  height: auto;
+}
+
+#attachmentsTable th {
+  border: 1px solid #ddd; /* match studentsTable */
+  padding: 6px 8px;       /* match studentsTable */
+  text-align: left;
+  font-size: 0.9rem;      /* match studentsTable */
+  background-color: #004080; /* match Address column header */
+  color: white;
+  font-weight: 600;
+  word-wrap: break-word;
+  vertical-align: middle;
+}
+
+#attachmentsTable td {
+  border: 1px solid #ddd; /* match studentsTable */
+  padding: 6px 8px;       /* match studentsTable */
+  text-align: left;
+  font-size: 0.9rem;      /* match studentsTable */
+  background-color: #fff; /* match studentsTable td */
+  word-wrap: break-word;
+  vertical-align: middle;
+}
+
+#attachmentsTable tbody tr:hover {
+  background-color: #eef5ff; /* same as studentsTable */
+  cursor: pointer;
+}
+
+/* ===== Section Headings ===== */
+h2 {
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-size: 1.2rem;
+  color: #004080;
+}
+
+/* ===== Status Message ===== */
+#status {
+  margin: 20px;
+  font-weight: bold;
+  color: rgb(18, 151, 98);
+}
+
+/* ===== Responsive: Tablets and Smaller ===== */
+@media (max-width: 115px) {
+  .tables-container {
+    flex-direction: column;
+  }
+
+  .table-wrapper {
+    margin-bottom: 100px;
+  }
+
+  #studentsTable,
+  #attachmentsTable {
+    min-width: unset;
+  }
+}
+
+/* ===== Responsive: Phones ===== */
+@media (max-width: 768px) {
+  #studentsTable th,
+  #studentsTable td {
+    padding: 10px 6px;
+    font-size: 0.8rem;
+  }
+
+  #attachmentsTable th,
+  #attachmentsTable td {
+    padding: 10px 6px;
+    font-size: 0.8rem;
+  }
+
+  header h1 {
+    font-size: 1.4rem;
+  }
+
+  .tables-container {
+    flex-direction: column;
+  }
+
+  .attachments-wrapper {
+    max-width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .students-wrapper {
+    max-width: 100%;
+    flex: 1 1 auto;
+  }
+}
+
+/* Apply to all data cells */
+#studentsTable tbody td {
+  padding: 20px 6px;
+  line-height: 1.1;
+}

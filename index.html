@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>School Application</title>
+  <link rel="stylesheet" href="Style.css" />
+  <style>
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .modal.show {
+      display: flex;
+      opacity: 1;
+    }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      max-width: 600px;
+      width: 90%;
+      position: relative;
+      animation: slideDown 0.3s ease forwards;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Bright Future High School</h1>
+    <a class="admin-login" href="login.html">
+    Admin
+  </a>
+  </header>
+
+  <img src="Pictures/download.webp" alt="School" class="school-image" />
+
+  <!-- About the School Section -->
+  <section class="about-school container">
+    
+    <h2>About Bright Future High School</h2>
+    <p>
+      Bright Future High School serves learners from <strong>Grade 8 to Grade 12</strong>, providing a holistic educational experience designed to empower, inspire, and prepare students for life beyond school.
+    </p>
+    <p>
+      Located in the heart of Khayelitsha, Cape Town, we are committed to fostering academic excellence, personal growth, and social responsibility.
+    </p>
+    <p>
+      Our school prides itself on a dynamic curriculum, a dedicated teaching staff, and a safe, inclusive learning environment where every learner is valued.
+    </p>
+    <p>
+      <strong>School Address:</strong><br>
+      123 Ubuntu Street, Site B, Khayelitsha, Cape Town, 7784
+    </p>
+    <p>
+      <strong>Principal:</strong> Mr. M. Dlamini<br>
+      <strong>Phone:</strong> 021 555 1234<br>
+      <strong>Email:</strong> <a href="mailto:principal@brightfuturehs.co.za">principal@brightfuturehs.co.za</a>
+    </p>
+    <p>
+      <strong>Deputy Principal:</strong> Mrs. T. Mkhize<br>
+      <strong>Phone:</strong> 021 555 5678<br>
+      <strong>Email:</strong> <a href="mailto:deputy@brightfuturehs.co.za">deputy@brightfuturehs.co.za</a>
+    </p>
+    <p>
+      We offer three academic streams to cater to diverse interests and talents:
+    </p>
+  </section>
+
+  <!-- Streams Overview Section -->
+  <section class="streams container">
+    <div class="stream-card">
+      <img src="Pictures/th.jpg" alt="Science Stream" />
+      <h3>Mathematics and Science Stream</h3>
+      <p>Perfect for students passionate about Physics, Chemistry, Biology, and advanced Mathematics.</p>
+      <a class="read-more-btn" href="science.html">Read More</a>
+    </div>
+
+    <div class="stream-card">
+      <img src="Pictures/OIP.webp" alt="Accounting Stream" />
+      <h3>Mathematics and Accounting Stream</h3>
+      <p>Ideal for students interested in Economics, Accounting, Business Studies, and Mathematics.</p>
+      <a class="read-more-btn" href="accounting.html">Read More</a>
+    </div>
+
+    <div class="stream-card">
+      <img src="Pictures/OIP (1).webp" alt="Humanities Stream" />
+      <h3>Mathematical Literacy and Humanities Stream</h3>
+      <p>Designed for students focused on Geography, History, Religious Studies, and practical math applications.</p>
+      <a class="read-more-btn" href="huminities.html">Read More</a>
+    </div>
+  </section>
+
+  <!-- Modal for detailed stream info -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" aria-label="Close modal">&times;</button>
+      <h2 id="modalTitle"></h2>
+      <p id="modalText"></p>
+    </div>
+  </div>
+
+  <!-- Big clickable apply now text as a link to new page -->
+  <a class="apply-now-banner" href="application.html">
+    Click here to apply!!
+  </a>
+ 
+  <footer>
+    <p>&copy; 2023 Bright Future High School. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const modal = document.getElementById("modal");
+    const closeBtn = document.querySelector(".close-btn");
+
+    function closeModal() {
+      modal.classList.remove("show");
+    }
+
+    closeBtn.addEventListener("click", closeModal);
+    window.addEventListener("click", event => {
+      if (event.target === modal) closeModal();
+    });
+
+    document.querySelectorAll(".read-more-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        const key = button.getAttribute("data-stream");
+        if (streamDetails[key]) openModal(key);
+      });
+    });
+
+    function showStreamDetails() {
+      const stream = document.getElementById("streamSelect").value;
+      const subjectsDiv = document.getElementById("subjects");
+      const subjectList = {
+        science: "Physical Science, Agricultural Science, Life Science, Mathematics, isiXhosa, English FAL, Life Orientation",
+        accounting: "Economics, Accounting, Business Studies, Mathematics, isiXhosa, English FAL, Life Orientation",
+        humanities: "History, Geography, Religious Studies, Mathematical Literacy, isiXhosa, English FAL, Life Orientation"
+      };
+      subjectsDiv.innerHTML = stream
+        ? `<strong>Subjects:</strong> ${subjectList[stream]}`
+        : "<strong>Please select a stream.</strong>";
+    }
+  </script>
+</body>
+</html>
