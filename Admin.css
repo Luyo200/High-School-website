@@ -11,18 +11,20 @@ body {
   background-color: #f7f9fc;
   color: #333;
 }
+
+/* Header & Signout */
 .header {
   display: flex;
   justify-content: flex-end;
   padding: 20px;
-  background-color: #f9f9f9; /* natural/light tone */
-  border-bottom: 1px solid #ccc;
+  background-color: #37ceab;
+  border-bottom: 1px solid #c9dece;
 }
 
 .signout-button {
   padding: 10px 16px;
-  background-color: #8fd1d4; /* soft neutral */
-  color: #e4d2d2;
+  background-color: #8fd1d4;
+  color: #333;
   border: 1px solid #151414;
   border-radius: 4px;
   cursor: pointer;
@@ -30,40 +32,7 @@ body {
 }
 
 .signout-button:hover {
-  background-color: #d6d6d6;
-}
-
-
-/* Header styling */
-header {
-  background-color: #004080;
-  color: white;
-  padding: 20px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-header h1 {
-  margin: 0;
-  font-size: 1.8rem;
-}
-
-
-/* Download Link column (2nd) width and wrapping */
-#attachmentsTable th:nth-child(2),
-#attachmentsTable td:nth-child(2) {
-  width: 15%;
-  max-width: 180px;
-  min-width: 80px;
-  white-space: normal;
-  word-wrap: break-word;
-  height: auto;
-}
-
-.sign-out-button:hover {
-  background-color: #c43a3a;
+  background-color: #5d5c57;
 }
 
 /* ===== Layout for side-by-side tables ===== */
@@ -72,53 +41,61 @@ header h1 {
   justify-content: space-between;
   gap: 1px;
   padding: 2px;
+  overflow-x: auto;
 }
 
 /* Common wrapper for all tables */
 .table-wrapper {
   background: white;
-  padding: 0px;
+  padding: 0;
   border-radius: 1px;
   box-shadow: 0 2px 19px rgba(0, 0, 0, 0.05);
   overflow-x: auto;
 }
 
-/* Make attachments table wrapper narrower */
+/* Make attachments table wrapper wider and remove vertical scroll */
 .attachments-wrapper {
-  flex: 0 0 35%;
-  max-width: 400px;
+  flex: 0 0 45%;  /* increased from 35% */
+  max-width: 600px; /* increased from 400px */
+  max-height: none; /* Remove max-height limit */
+  height: auto;     /* Let height adjust automatically */
+  overflow-y: visible; /* Remove vertical scroll */
 }
 
-/* Students table wrapper takes remaining space */
+/* Students table wrapper takes remaining space with scroll */
 .students-wrapper {
   flex: 1;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: auto;
+  border: 1px solid #ccc;
 }
 
 /* ===== Students Table Styling ===== */
 #studentsTable {
-  width: 100%;
+  width: 1600px;
+  min-width: 1600px;
   border-collapse: collapse;
   table-layout: fixed;
-  min-width: 1000px;
 }
 
-/* Address column (9th) width and wrapping */
-#studentsTable th:nth-child(9),
-#studentsTable td:nth-child(9) {
-  width: 15%;
-  max-width: 200px;
-  min-width: 120px;
-  white-space: normal;
-  word-wrap: break-word;
-  height: auto;
+/* Make students and attachments table cells the same height */
+#studentsTable th,
+#studentsTable td,
+#attachmentsTable th,
+#attachmentsTable td {
+  height: 60px;          /* Fixed height for cells */
+  padding: 15px 10px;    /* Uniform padding */
+  line-height: 1.4;      /* Consistent line height */
+  vertical-align: middle;
 }
 
+/* Specific header and cell styles for students table */
 #studentsTable th {
   border: 1px solid #ddd;
-  padding: 6px 8px;
+  padding: 4px 8px;
   text-align: left;
   word-wrap: break-word;
-  vertical-align: middle;
   font-size: 0.9rem;
   background-color: #004080;
   color: white;
@@ -127,10 +104,8 @@ header h1 {
 
 #studentsTable td {
   border: 1px solid #ddd;
-  padding: 6px 8px;
   text-align: left;
   word-wrap: break-word;
-  vertical-align: middle;
   font-size: 0.9rem;
   background-color: #fff;
 }
@@ -142,47 +117,60 @@ header h1 {
 
 /* ===== Attachments Table Styling ===== */
 #attachmentsTable {
-  width: 10%;
+  width: 90%; /* increased from 10% */
+  min-width: 580px; /* increased from 426px */
   border-collapse: collapse;
   table-layout: fixed;
-  min-width: 426.4px;
 }
 
 /* File Name column (1st) width and wrapping */
 #attachmentsTable th:first-child,
 #attachmentsTable td:first-child {
-  width: 20%;
-  max-width: 300px;
-  min-width: 150px;
+  width: 60%; /* increased to fill more space */
+  max-width: none;
+  min-width: 300px; /* increased */
   white-space: normal;
   word-wrap: break-word;
+  font-size: 0.9rem;
   height: auto;
 }
 
+/* Download Link column (2nd) width and wrapping */
+#attachmentsTable th:nth-child(2),
+#attachmentsTable td:nth-child(2) {
+  width: 40%; /* increased */
+  max-width: none;
+  min-width: 180px; /* increased */
+  white-space: normal;
+  word-wrap: break-word;
+  font-size: 0.99rem;
+  padding: 7px 9px;
+  line-height: 1.1;
+}
+
 #attachmentsTable th {
-  border: 1px solid #ddd; /* match studentsTable */
-  padding: 6px 8px;       /* match studentsTable */
+  border: 1px solid #ddd;
+  padding: 6px 8px;
   text-align: left;
-  font-size: 0.9rem;      /* match studentsTable */
-  background-color: #004080; /* match Address column header */
+  font-size: 0.9rem;
+  background-color: #004080;
   color: white;
   font-weight: 600;
-  word-wrap: break-word;
-  vertical-align: middle;
 }
 
 #attachmentsTable td {
-  border: 1px solid #ddd; /* match studentsTable */
-  padding: 6px 8px;       /* match studentsTable */
+  border: 1px solid #ddd;
   text-align: left;
-  font-size: 0.9rem;      /* match studentsTable */
-  background-color: #fff; /* match studentsTable td */
-  word-wrap: break-word;
+  font-size: 0.85rem; /* reduced font size */
+  background-color: #fff;
+  height: 35px;        /* reduced row height */
+  padding: 6px 10px;   /* adjusted padding */
   vertical-align: middle;
+  line-height: 1.2;
 }
 
 #attachmentsTable tbody tr:hover {
-  background-color: #eef5ff; /* same as studentsTable */
+  background-color: #eef5ff;
   cursor: pointer;
 }
 
@@ -202,29 +190,16 @@ h2 {
 }
 
 /* ===== Responsive: Tablets and Smaller ===== */
-@media (max-width: 115px) {
+@media (max-width: 1150px) {
   .tables-container {
     flex-direction: column;
-  }
-
-  .table-wrapper {
-    margin-bottom: 100px;
-  }
-
-  #studentsTable,
-  #attachmentsTable {
-    min-width: unset;
   }
 }
 
 /* ===== Responsive: Phones ===== */
 @media (max-width: 768px) {
   #studentsTable th,
-  #studentsTable td {
-    padding: 10px 6px;
-    font-size: 0.8rem;
-  }
-
+  #studentsTable td,
   #attachmentsTable th,
   #attachmentsTable td {
     padding: 10px 6px;
@@ -239,19 +214,31 @@ h2 {
     flex-direction: column;
   }
 
-  .attachments-wrapper {
-    max-width: 100%;
-    flex: 1 1 auto;
-  }
-
+  .attachments-wrapper,
   .students-wrapper {
     max-width: 100%;
     flex: 1 1 auto;
   }
 }
-
-/* Apply to all data cells */
-#studentsTable tbody td {
-  padding: 20px 6px;
-  line-height: 1.1;
+/* Reduce width of attachments wrapper */
+.attachments-wrapper {
+  flex: 0 0 35%;      /* reduced from 45% */
+  max-width: 450px;   /* reduced from 600px */
+  max-height: none;   /* keep no height limit */
+  height: auto;
+  overflow-y: visible;
 }
+
+/* Increase height for table cells that contain a link or file name text */
+#attachmentsTable td {
+  vertical-align: middle;
+  padding: 8px 8px;
+  line-height: 1.4;
+}
+
+/* Specifically increase height for cells containing links or file names */
+#attachmentsTable td:has(a),
+#attachmentsTable td:not(:empty) {
+  height: 10px;  /* or any height you prefer */
+}
+

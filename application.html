@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Apply & Upload - Bright Future High School</title>
   <link rel="stylesheet" href="styleApplication.css" />
-  
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <style>
@@ -55,33 +55,33 @@
         <!-- Student Info Fields -->
         <div class="form-group">
           <label for="firstName">Name:</label>
-          <input type="text" id="firstName" name="name" required />
+          <input type="text" id="firstName" name="name" autocomplete="given-name" required />
         </div>
 
         <div class="form-group">
           <label for="surname">Surname:</label>
-          <input type="text" id="surname" name="surname" required />
+          <input type="text" id="surname" name="surname" autocomplete="family-name" required />
         </div>
 
         <div class="form-group">
           <label for="idNumber">ID Number:</label>
-          <input type="text" id="idNumber" name="idNumber" pattern="\d{13}" maxlength="13" required />
+          <input type="text" id="idNumber" name="idNumber" pattern="\d{13}" maxlength="13" autocomplete="off" required />
           <div class="file-hint">Must be a 13-digit valid South African ID number.</div>
         </div>
 
         <div class="form-group">
           <label for="email">Email Address:</label>
-          <input type="email" id="email" name="email" required />
+          <input type="email" id="email" name="email" autocomplete="email" required />
         </div>
 
         <div class="form-group">
           <label for="phoneNumber">Phone Number:</label>
-          <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}" required />
+          <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}" autocomplete="tel" required />
         </div>
 
         <div class="form-group">
           <label for="currentGrade">Current Grade:</label>
-          <select id="currentGrade" name="currentGrade" required>
+          <select id="currentGrade" name="currentGrade" autocomplete="off" required>
             <option value="">-- Select --</option>
             <option>Grade 8</option>
             <option>Grade 9</option>
@@ -93,7 +93,7 @@
 
         <div class="form-group">
           <label for="gradeApplying">Grade Applying For:</label>
-          <select id="gradeApplying" name="gradeApplying" required>
+          <select id="gradeApplying" name="gradeApplying" autocomplete="off" required>
             <option value="">-- Select --</option>
             <option>Grade 8</option>
             <option>Grade 9</option>
@@ -104,7 +104,7 @@
 
         <div class="form-group">
           <label for="stream">Stream Applying For:</label>
-          <select id="stream" name="stream" required>
+          <select id="stream" name="stream" autocomplete="off" required>
             <option value="">-- Select --</option>
             <option value="science">Mathematics and Science</option>
             <option value="accounting">Mathematics and Accounting</option>
@@ -112,19 +112,27 @@
           </select>
         </div>
 
+        <!-- New Year Applying For -->
+        <div class="form-group">
+          <label for="yearApplyingFor">Year Applying For:</label>
+          <select id="yearApplyingFor" name="yearApplyingFor" autocomplete="off" required>
+            <!-- options added dynamically below -->
+          </select>
+        </div>
+
         <div class="form-group">
           <label for="streetAddress">Street Address:</label>
-          <input type="text" id="streetAddress" name="streetAddress" required />
+          <input type="text" id="streetAddress" name="streetAddress" autocomplete="street-address" required />
         </div>
 
         <div class="form-group">
           <label for="city">City:</label>
-          <input type="text" id="city" name="city" required />
+          <input type="text" id="city" name="city" autocomplete="address-level2" required />
         </div>
 
         <div class="form-group">
           <label for="postalCode">Postal Code:</label>
-          <input type="text" id="postalCode" name="postalCode" required />
+          <input type="text" id="postalCode" name="postalCode" autocomplete="postal-code" required />
         </div>
 
         <!-- Document Upload Section -->
@@ -162,8 +170,19 @@
     <p>&copy; 2025 Bright Future High School. All rights reserved.</p>
   </footer>
 
+  <script>
+    // Dynamically add years to yearApplyingFor dropdown (current year + next 5 years)
+    const yearSelect = document.getElementById('yearApplyingFor');
+    const currentYear = new Date().getFullYear();
+    for (let i = 0; i <= 5; i++) {
+      const option = document.createElement('option');
+      option.value = currentYear + i;
+      option.textContent = currentYear + i;
+      yearSelect.appendChild(option);
+    }
+  </script>
+
   <script src="application.js"></script>
- 
 </body>
 
 </html>
