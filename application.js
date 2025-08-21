@@ -4,6 +4,8 @@ document.getElementById("applicationFormElement").addEventListener("submit", asy
   const form = event.target;
   const successMessage = document.getElementById("successMessage");
   const errorMessage = document.getElementById("errorMessage");
+  const submitButton = form.querySelector('button[type="submit"]');
+
   successMessage.textContent = "";
   errorMessage.textContent = "";
 
@@ -82,6 +84,15 @@ document.getElementById("applicationFormElement").addEventListener("submit", asy
       postalCode: form.postalCode.value.trim()
     };
 
+    // --- Disable submit button to prevent multiple clicks ---
+    if (submitButton) submitButton.disabled = true;
+
+    // --- Clear all input fields immediately ---
+    form.reset();
+    form.studentIDDoc.value = "";
+    form.guardianIDDoc.value = "";
+    form.septemberReport.value = "";
+
     // --- STEP 3: Upload files ---
     const filesToUpload = [
       { file: studentIDFile, field: "studentIDDoc" },
@@ -114,10 +125,13 @@ document.getElementById("applicationFormElement").addEventListener("submit", asy
       const errorData = await addResponse.json();
       errorMessage.textContent =
         errorData.message || "Application with this email or ID already exists.";
+      if (submitButton) submitButton.disabled = false;
       return;
     }
 
-    if (!addResponse.ok) throw new Error("Failed to submit application data.");
+    if (!addResponse.ok) {
+      throw new Error("Failed to submit application data.");
+    }
 
     // --- STEP 5: Send confirmation email ---
     const emailResponse = await fetch("http://localhost:8084/notify-application-submission", {
@@ -133,7 +147,6 @@ document.getElementById("applicationFormElement").addEventListener("submit", asy
     // --- STEP 6: Final success ---
     successMessage.textContent =
       "Application and documents submitted successfully! Confirmation email sent. Redirecting in 5 seconds...";
-    form.reset();
 
     setTimeout(() => {
       window.location.href = "index.html";
@@ -141,5 +154,6 @@ document.getElementById("applicationFormElement").addEventListener("submit", asy
 
   } catch (error) {
     errorMessage.textContent = "Submission failed: " + error.message;
+    if (submitButton) submitButton.disabled = false; // Re-enable on failure
   }
 });
