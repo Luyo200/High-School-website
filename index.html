@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>School Application</title>
+  <title>Bright Future High School</title>
   <link rel="stylesheet" href="Style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
   <style>
+    /* Inline modal style */
     .modal {
       display: none;
       position: fixed;
@@ -46,18 +48,25 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>Welcome to Bright Future High School</h1>
-    <a class="admin-login" href="login.html">
-    Admin
-  </a>
-  </header>
 
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <h1 class="logo">Bright Future High School</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ApplicationSteps.html">Apply Now</a></li>
+        <li><a href="login.html">Admin</a></li>
+        <li><a href="register.html">Register / Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Image -->
   <img src="Pictures/download.webp" alt="School" class="school-image" />
 
   <!-- About the School Section -->
   <section class="about-school container">
-    
     <h2>About Bright Future High School</h2>
     <p>
       Bright Future High School serves learners from <strong>Grade 8 to Grade 12</strong>, providing a holistic educational experience designed to empower, inspire, and prepare students for life beyond school.
@@ -69,25 +78,11 @@
       Our school prides itself on a dynamic curriculum, a dedicated teaching staff, and a safe, inclusive learning environment where every learner is valued.
     </p>
     <p>
-      <strong>School Address:</strong><br>
-      123 Ubuntu Street, Site B, Khayelitsha, Cape Town, 7784
-    </p>
-    <p>
-      <strong>Principal:</strong> Mr. M. Dlamini<br>
-      <strong>Phone:</strong> 021 555 1234<br>
-      <strong>Email:</strong> <a href="mailto:principal@brightfuturehs.co.za">principal@brightfuturehs.co.za</a>
-    </p>
-    <p>
-      <strong>Deputy Principal:</strong> Mrs. T. Mkhize<br>
-      <strong>Phone:</strong> 021 555 5678<br>
-      <strong>Email:</strong> <a href="mailto:deputy@brightfuturehs.co.za">deputy@brightfuturehs.co.za</a>
-    </p>
-    <p>
       We offer three academic streams to cater to diverse interests and talents:
     </p>
   </section>
 
-  <!-- Streams Overview Section -->
+  <!-- Academic Streams Section -->
   <section class="streams container">
     <div class="stream-card">
       <img src="Pictures/th.jpg" alt="Science Stream" />
@@ -111,7 +106,7 @@
     </div>
   </section>
 
-  <!-- Modal for detailed stream info -->
+  <!-- Modal -->
   <div id="modal" class="modal">
     <div class="modal-content">
       <button class="close-btn" aria-label="Close modal">&times;</button>
@@ -120,15 +115,35 @@
     </div>
   </div>
 
-  <!-- Big clickable apply now text as a link to new page -->
-  <a class="apply-now-banner" href="ApplicationSteps.html">
-    Click here to apply!!
-  </a>
- 
+  <!-- Contact Us Section -->
+  <section class="contact-us container">
+    <h2>Contact Us</h2>
+    <div class="contact-details">
+      <p>
+        <strong>School Address:</strong><br>
+        123 Ubuntu Street, Site B, Khayelitsha, Cape Town, 7784
+      </p>
+      <p>
+        <strong>Principal:</strong> Mr. M. Dlamini<br>
+        <strong>Phone:</strong> 021 555 1234<br>
+        <strong>Email:</strong> 
+        <a href="mailto:principal@brightfuturehs.co.za">principal@brightfuturehs.co.za</a>
+      </p>
+      <p>
+        <strong>Deputy Principal:</strong> Mrs. T. Mkhize<br>
+        <strong>Phone:</strong> 021 555 5678<br>
+        <strong>Email:</strong> 
+        <a href="mailto:deputy@brightfuturehs.co.za">deputy@brightfuturehs.co.za</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
     <p>&copy; 2023 Bright Future High School. All rights reserved.</p>
   </footer>
 
+  <!-- Modal Script -->
   <script>
     const modal = document.getElementById("modal");
     const closeBtn = document.querySelector(".close-btn");
@@ -148,19 +163,6 @@
         if (streamDetails[key]) openModal(key);
       });
     });
-
-    function showStreamDetails() {
-      const stream = document.getElementById("streamSelect").value;
-      const subjectsDiv = document.getElementById("subjects");
-      const subjectList = {
-        science: "Physical Science, Agricultural Science, Life Science, Mathematics, isiXhosa, English FAL, Life Orientation",
-        accounting: "Economics, Accounting, Business Studies, Mathematics, isiXhosa, English FAL, Life Orientation",
-        humanities: "History, Geography, Religious Studies, Mathematical Literacy, isiXhosa, English FAL, Life Orientation"
-      };
-      subjectsDiv.innerHTML = stream
-        ? `<strong>Subjects:</strong> ${subjectList[stream]}`
-        : "<strong>Please select a stream.</strong>";
-    }
   </script>
 </body>
 </html>

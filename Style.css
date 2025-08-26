@@ -1,55 +1,97 @@
-/* Reset and fonts */
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: #f7f9fc;
-  color: #333;
   line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
-header {
-  background: linear-gradient(to right, #004aad, #2c62d9);
-  color: white;
-  padding: 20px 0;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-h1 {
-  margin: 0;
-  font-size: 2.5rem;
-}
-
+/* Container Utility */
 .container {
-  max-width: 1100px;
-  margin: 30px auto;
-  padding: 0 20px;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px 0;
 }
 
-/* School image */
+/* Navigation Bar */
+.navbar {
+  background-color: #004aad;
+  color: #fff;
+  padding: 15px 0;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffd700;
+}
+
+/* Hero Image */
 .school-image {
   width: 100%;
   max-height: 400px;
   object-fit: cover;
-  margin-bottom: 30px;
 }
 
-/* Stream section */
+/* Section Titles */
+section h2 {
+  color: #004aad;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+/* About Section */
+.about-school p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+/* Streams Section */
 .streams {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 20px;
   justify-content: center;
 }
 
 .stream-card {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
   width: 300px;
-  text-align: center;
-  transition: transform 0.3s ease;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
 }
 
 .stream-card:hover {
@@ -58,212 +100,111 @@ h1 {
 
 .stream-card img {
   width: 100%;
+  border-radius: 6px;
   height: 180px;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+}
+
+.stream-card h3 {
+  color: #004aad;
+  margin-bottom: 10px;
+}
+
+.stream-card p {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
 }
 
 .read-more-btn {
   display: inline-block;
-  margin-top: 10px;
-  padding: 10px 20px;
-  background: #004aad;
-  color: white;
+  background-color: #004aad;
+  color: #fff;
+  padding: 8px 15px;
   text-decoration: none;
-  border-radius: 6px;
-  transition: background 0.3s ease;
+  border-radius: 4px;
+  font-size: 0.9rem;
 }
 
 .read-more-btn:hover {
-  background: #03317e;
+  background-color: #003580;
 }
 
-/* Apply now banners */
-.apply-links {
-  text-align: center;
-  margin: 50px 0 30px;
-}
-
+/* Apply Now Banner */
 .apply-now-banner {
-  display: inline-block;
-  margin: 10px;
-  padding: 15px 30px;
-  background: #28a745;
-  color: white;
+  display: block;
+  text-align: center;
+  background-color: #28a745;
+  color: #fff;
   font-weight: bold;
+  font-size: 1.2rem;
+  padding: 15px;
+  margin: 30px auto;
+  width: 80%;
+  border-radius: 6px;
   text-decoration: none;
-  border-radius: 8px;
-  transition: background 0.3s ease;
 }
 
 .apply-now-banner:hover {
-  background: #218838;
+  background-color: #218838;
 }
 
-/* Modal styling */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.5);
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+/* Contact Section */
+.contact-us {
+  background-color: #f0f8ff;
+  padding: 30px 0;
+  margin-top: 40px;
+  border-top: 2px solid #004aad;
 }
 
-.modal.show {
-  display: flex;
-  opacity: 1;
+.contact-details p {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
 }
 
-.modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 6px;
-  max-width: 600px;
-  width: 90%;
-  position: relative;
-  animation: slideDown 0.3s ease forwards;
+.contact-details a {
+  color: #004aad;
+  text-decoration: none;
 }
 
-@keyframes slideDown {
-  from { transform: translateY(-20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
+.contact-details a:hover {
+  text-decoration: underline;
 }
 
 /* Footer */
 footer {
-  background: #f1f1f1;
-  padding: 20px;
+  background-color: #004aad;
+  color: #fff;
   text-align: center;
-  color: #777;
+  padding: 15px;
+  margin-top: 40px;
   font-size: 0.9rem;
 }
-/* About School Section */
-.about-school {
-  background: linear-gradient(135deg, #f0f4ff, #ffffff);
-  padding: 40px 50px;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(46, 61, 73, 0.15);
-  margin-bottom: 40px;
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
-  color: #223344;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  transition: transform 0.3s ease;
-}
 
-.about-school:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(46, 61, 73, 0.25);
-}
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
 
-.about-school h2 {
-  margin-bottom: 25px;
-  font-size: 2.6rem;
-  font-weight: 800;
-  color: #1a2a6c;
-  letter-spacing: 1px;
-  text-align: center;
-  text-shadow: 1px 1px 3px rgba(26, 42, 108, 0.3);
-}
+  .streams {
+    flex-direction: column;
+    align-items: center;
+  }
 
-.about-school p {
-  font-size: 1.2rem;
-  line-height: 1.75;
-  margin-bottom: 20px;
-  letter-spacing: 0.03em;
-}
+  .stream-card {
+    width: 90%;
+  }
 
-.about-school p strong {
-  color: #4e73df;
-  font-weight: 700;
-}
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 
-/* Contact info box inside about-school */
-.contact-info {
-  margin-top: 30px;
-  padding: 25px 30px;
-  background-color: #f7fbff;
-  border-left: 6px solid #4e73df;
-  border-radius: 10px;
-  font-size: 1.1rem;
-  color: #33475b;
-  box-shadow: 0 3px 10px rgba(78, 115, 223, 0.1);
-  transition: box-shadow 0.3s ease;
-}
-
-.contact-info:hover {
-  box-shadow: 0 6px 20px rgba(78, 115, 223, 0.25);
-}
-
-.contact-info p {
-  margin: 10px 0;
-  line-height: 1.5;
-}
-
-.contact-info strong {
-  display: inline-block;
-  width: 180px;
-  font-weight: 700;
-  color: #2f3e5a;
-  letter-spacing: 0.02em;
-}
-
-.contact-info a {
-  color: #4e73df;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-.contact-info a:hover {
-  color: #1a2a6c;
-  text-shadow: 0 0 5px rgba(26, 42, 108, 0.5);
-  text-decoration: underline;
-}
-.sign-out-button {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 16px;
-  background-color: #f44336;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-}
-
-.sign-out-button:hover {
-  background-color: #d32f2f;
-}
-.admin-login {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  padding: 8px 14px;
-  background-color: #004080;
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-  z-index: 1000;
-}
-
-.admin-login:hover {
-  background-color: #003060;
+  .apply-now-banner {
+    width: 90%;
+    font-size: 1rem;
+  }
 }

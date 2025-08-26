@@ -1,75 +1,128 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f9f9f9;
+/* Reset and Base Styles */
+* {
   margin: 0;
-  padding: 30px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  background-color: #f9f9f9;
   color: #333;
+  padding: 20px;
 }
 
+/* Steps Container */
 .steps-container {
-  max-width: 800px;
+  max-width: 900px;
   margin: auto;
-  background: white;
+  background: #ffffff;
   padding: 40px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+/* Back Button */
+.back-button {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #004aad;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-button:hover {
+  text-decoration: underline;
+}
+
+/* Headings */
+.steps-container h1 {
+  color: #004aad;
+  font-size: 2rem;
+  margin-bottom: 30px;
   text-align: center;
-  color: #004080;
-  margin-bottom: 30px;
-}
-
-.step {
-  margin-bottom: 30px;
 }
 
 .step h2 {
-  color: #006699;
-  margin-bottom: 10px;
+  font-size: 1.4rem;
+  margin-top: 30px;
+  color: #003580;
+}
+
+/* Paragraphs and Lists */
+.step p {
+  margin: 10px 0 15px;
 }
 
 .step ul {
-  padding-left: 20px;
+  list-style: disc inside;
+  margin-bottom: 20px;
+  padding-left: 15px;
 }
 
 .step ul li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  line-height: 1.5;
 }
 
+/* Code Snippets */
+code {
+  background: #f0f0f0;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.95rem;
+}
+
+/* Note and Warning Style */
 .note {
-  color: red;
-  font-weight: bold;
+  background: #fff3cd;
+  color: #856404;
+  border-left: 5px solid #ffeeba;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  margin-top: 10px;
 }
 
+/* Navigation Button */
 .back {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 .back a {
-  color: #004080;
+  display: inline-block;
+  background-color: #004aad;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 }
- .back-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background-color: #f0f0f0;
-            padding: 10px 16px;
-            border-radius: 5px;
-            text-decoration: none;
-            color: #08374b;
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
 
-        .back-button:hover {
-            background-color: #e0e0e0;
-        }
+.back a:hover {
+  background-color: #003580;
+}
 
-        .steps-container {
-            margin-top: 60px; /* To avoid overlap with the button */
-        }
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .steps-container {
+    padding: 20px;
+  }
+
+  .steps-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .step h2 {
+    font-size: 1.2rem;
+  }
+
+  .back a {
+    font-size: 0.95rem;
+    padding: 10px 16px;
+  }
+}
