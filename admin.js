@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:8084";
+const baseUrl = "http://localhost:8080";
 const studentsTbody = document.querySelector("#studentsTable tbody");
 const attachmentsTbody = document.querySelector("#attachmentsTable tbody");
 const statusDiv = document.getElementById("status");
@@ -11,7 +11,7 @@ async function loadData() {
 
   try {
     const [studentsResponse, documentsResponse] = await Promise.all([
-      fetch(`${baseUrl}/all`, { method: "GET", headers: { Accept: "application/json" } }),
+      fetch(`${baseUrl}/api/student/all`, { method: "GET", headers: { Accept: "application/json" } }),
       fetch(`${baseUrl}/documents`, { method: "GET", headers: { Accept: "application/json" } }),
     ]);
 

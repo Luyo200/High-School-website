@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Teacher Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        /* Header Buttons */
+        #headerButtons {
+            margin-bottom: 20px;
+        }
+
+        #headerButtons button {
+            margin-right: 12px;
+            padding: 10px 20px;
+            background-color: #2e7d32;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 3px 6px rgba(46, 125, 50, 0.4);
+        }
+
+        #headerButtons button:hover {
+            background-color: #27632a;
+        }
+
+        #headerButtons button.active {
+            background-color: #1b4d17;
+            box-shadow: 0 4px 8px rgba(27, 77, 23, 0.6);
+        }
+
+        /* Hide all sections by default */
+        section {
+            display: none;
+        }
+
+        /* Show active section */
+        section.active {
+            display: block;
+        }
+
+        /* Profile Card */
+        .profile-card {
+            max-width: 420px;
+            background: white;
+            border-radius: 14px;
+            padding: 30px 35px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .profile-card h3 {
+            margin: 0 0 18px 0;
+            color: #1b4332;
+            font-weight: 700;
+            font-size: 28px;
+            letter-spacing: 0.03em;
+        }
+
+        .profile-card p {
+            margin: 8px 0;
+            font-size: 17px;
+            color: #3a3a3a;
+        }
+
+        .profile-card p strong {
+            color: #2e7d32;
+            width: 160px;
+            display: inline-block;
+        }
+
+        /* Table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #2e7d32;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"] {
+            width: 90%;
+            padding: 6px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="number"]:focus {
+            border-color: #2e7d32;
+            outline: none;
+        }
+
+        .btn {
+            margin-top: 15px;
+            padding: 12px 26px;
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(46, 125, 50, 0.4);
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            background-color: #27632a;
+        }
+
+        .delete-btn {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 3px 6px rgba(211, 47, 47, 0.5);
+            transition: background-color 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            background-color: #a12727;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="headerButtons">
+        <button id="btnProfile">View My Profile</button>
+        <button id="btnNotifications">Notifications</button>
+        <button id="btnStudentManagement" class="active">Student Management</button>
+    </div>
+
+    <!-- Profile Section -->
+    <section id="profileSection">
+        <h2>My Profile</h2>
+        <p>Welcome to your profile page. Here you can see your personal details.</p>
+
+        <div class="profile-card">
+            <h3 id="teacherNameFull">Name Surname</h3>
+            <p><strong>ID:</strong> <span id="teacherId"></span></p>
+            <p><strong>ID Number:</strong> <span id="teacherIdNumber"></span></p>
+            <p><strong>Email:</strong> <span id="teacherEmail"></span></p>
+            <p><strong>Phone:</strong> <span id="teacherPhoneNumber"></span></p>
+            <p><strong>Age:</strong> <span id="teacherAge"></span></p>
+            <p><strong>Subject:</strong> <span id="teacherSubject"></span></p>
+            <p><strong>Alternative Subject:</strong> <span id="teacherAltSubject"></span></p>
+        </div>
+    </section>
+
+    <!-- Notifications Section -->
+    <section id="notificationsSection">
+        <h2>Notifications</h2>
+        <p>You have no new notifications.</p>
+    </section>
+
+    <!-- Student Management Section -->
+    <section id="studentManagementSection" class="active">
+        <h2>Capture Student Results</h2>
+
+        <table class="results-table" id="resultsTable">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Student Surname</th>
+                    <th>Student Email</th>
+                    <th>Test Type</th>
+                    <th>Marks</th>
+                    <th>Remarks</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" placeholder="Enter Name" /></td>
+                    <td><input type="text" placeholder="Enter Surname" /></td>
+                    <td><input type="email" placeholder="Enter Email" /></td>
+                    <td><input type="text" placeholder="Enter Test Type" /></td>
+                    <td><input type="number" placeholder="Enter Marks" /></td>
+                    <td><input type="text" placeholder="Enter Remarks" /></td>
+                    <td><button class="delete-btn" onclick="deleteRow(this)">Delete</button></td>
+
+                    <!-- Hidden teacher email -->
+                    <td style="display:none;">
+                        <input type="hidden" class="teacher-email" value="" />
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <button class="btn" onclick="addRow()">Add Row</button>
+        <button class="btn" onclick="saveResults()">Save Results</button>
+    </section>
+
+    <script src="teacherProfile.js"></script>
+</body>
+
+</html>

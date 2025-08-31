@@ -30,7 +30,7 @@ forgotForm.addEventListener("submit", async function (e) {
   }
 
   try {
-    const response = await fetch("http://localhost:8084/send-retrieve-code", {
+    const response = await fetch("http://localhost:8080/send-retrieve-code", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),
@@ -58,7 +58,7 @@ codeForm.addEventListener("submit", async function (e) {
   const userCode = codeInput.value.trim();
 
   try {
-    const response = await fetch("http://localhost:8084/verify-reset-code", {
+    const response = await fetch("http://localhost:8080/verify-reset-code", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, code: userCode }),
@@ -93,7 +93,7 @@ passwordForm.addEventListener("submit", async function (e) {
   }
 
   try {
-    const response = await fetch("http://localhost:8084/reset-password", {
+    const response = await fetch("http://localhost:8080/reset-password", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, newPassword, code: verifiedCode }),

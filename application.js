@@ -104,7 +104,7 @@ document.getElementById("applicationFormElement").addEventListener("submit", asy
       const formData = new FormData();
       formData.append("file", fileObj.file);
 
-      const uploadResponse = await fetch("http://localhost:8084/upload", {
+      const uploadResponse = await fetch("http://localhost:8080/upload", {
         method: "POST",
         body: formData
       });
@@ -115,7 +115,7 @@ document.getElementById("applicationFormElement").addEventListener("submit", asy
     }
 
     // --- STEP 4: Submit student data ---
-    const addResponse = await fetch("http://localhost:8084/add", {
+    const addResponse = await fetch("http://localhost:8080/api/student/add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(student)
@@ -134,7 +134,7 @@ document.getElementById("applicationFormElement").addEventListener("submit", asy
     }
 
     // --- STEP 5: Send confirmation email ---
-    const emailResponse = await fetch("http://localhost:8084/notify-application-submission", {
+    const emailResponse = await fetch("http://localhost:8080/api/student/notify-application-submission", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: student.email })

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Student Profile</title>
+    <link rel="stylesheet" href="studentProfile.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Student Profile</h1>
+            <p>Welcome to the student portal. Here you can find all the relevant details about your academic progress.</p>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+            <button id="btnResults" class="active" onclick="showSection('results-section', this)">Results</button>
+            <button id="btnTimetable" onclick="showSection('timetable-section', this)">Class Timetable</button>
+            <button id="btnProfile" onclick="showSection('profile-section', this)">My Profile</button>
+            <button id="btnReport" onclick="showSection('report-section', this)">School Report</button>
+        </div>
+
+        <!-- Results Section -->
+        <div class="profile-section active" id="results-section">
+            <h2>Search Student Results by Email</h2>
+            <input type="email" id="emailInput" placeholder="Enter student email" />
+            <button class="btn" onclick="fetchResultsByEmail()">Search</button>
+            <div id="errorMessage" class="error-message"></div>
+
+            <table id="dynamicResultsTable" style="display:none;">
+                <thead>
+                    <tr>
+                        <th>Test Type</th>
+                        <th>Marks</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsBody"></tbody>
+            </table>
+            <div id="noResultsMessage" class="no-results" style="display:none;">
+                No results found for this email.
+            </div>
+        </div>
+
+        <!-- Class Timetable Section -->
+        <div class="profile-section" id="timetable-section">
+            <h2>Class Timetable</h2>
+            <p>Your weekly class timetable:</p>
+            <table>
+                <thead>
+                    <tr><th>Day</th><th>Time</th><th>Subject</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Monday</td><td>9:00 AM - 10:00 AM</td><td>Mathematics</td></tr>
+                    <tr><td>Tuesday</td><td>10:15 AM - 11:15 AM</td><td>Science</td></tr>
+                    <tr><td>Wednesday</td><td>11:30 AM - 12:30 PM</td><td>English</td></tr>
+                    <tr><td>Thursday</td><td>1:00 PM - 2:00 PM</td><td>History</td></tr>
+                    <tr><td>Friday</td><td>2:15 PM - 3:15 PM</td><td>Physical Education</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- My Profile Section -->
+        <div class="profile-section" id="profile-section">
+            <h2>My Profile</h2>
+            <div class="profile-info" id="studentProfileInfo">
+                <p><strong>Name:</strong> -</p>
+                <p><strong>Surname:</strong> -</p>
+                <p><strong>Email:</strong> -</p>
+                <p><strong>Class:</strong> -</p>
+                <p><strong>Age:</strong> -</p>
+            </div>
+        </div>
+
+        <!-- School Report Section -->
+        <div class="profile-section" id="report-section">
+            <h2>School Report</h2>
+            <p>Your academic report:</p>
+            <p>Overall GPA: 3.8</p>
+            <p>Credits Completed: 60</p>
+            <p>Graduation Status: On Track</p>
+            <a href="#" class="btn" style="text-decoration:none;">Download Full Report</a>
+        </div>
+    </div>
+
+    <script src="studentProfile.js"></script>
+</body>
+</html>

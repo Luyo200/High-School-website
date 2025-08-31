@@ -3,39 +3,202 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Create Account</title>
-  <link rel="stylesheet" href="StyleAccountForm.css">
+  <style>
+    /* Basic resets */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .register-container {
+      background-color: white;
+      padding: 25px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      color: #333;
+      text-align: center;
+    }
+
+    .back-link a {
+      color: #555;
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: #444;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    input[type="tel"],
+    select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.2s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="number"]:focus,
+    input[type="tel"]:focus,
+    select:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    .password-rules {
+      font-size: 0.85rem;
+      margin-top: 6px;
+      padding-left: 20px;
+      color: #666;
+      list-style-type: disc;
+    }
+
+    #strength-indicator {
+      font-size: 0.9rem;
+      margin-top: 5px;
+      color: #333;
+    }
+
+    #error-message {
+      color: #d9534f;
+      font-weight: 700;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #f8d7da;
+      border-radius: 5px;
+      display: none;
+    }
+
+    button[type="submit"],
+    button[type="button"] {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 1.1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover,
+    button[type="button"]:hover {
+      background-color: #218838;
+    }
+
+    .text-center {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.95rem;
+    }
+
+    .text-center a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .text-center a:hover {
+      text-decoration: underline;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Responsive */
+    @media (max-width: 460px) {
+      .register-container {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <div class="register-container">
-
-    <!-- Back to login link -->
     <div class="back-link">
       <a href="login.html">&larr; Back to Login</a>
     </div>
 
     <h2>Create Account</h2>
-    <form id="registerForm">
+
+    <form id="registerForm" novalidate>
       <div class="input-group">
+        <label for="userType">I am a:</label>
+        <select id="userType" required>
+          <option value="">Select user type</option>
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+
+      <div class="input-group hidden" id="nameGroup">
         <label for="name">Name</label>
-        <input type="text" id="name" required placeholder="Enter your name">
+        <input type="text" id="name" placeholder="Enter your name" />
       </div>
 
-      <div class="input-group">
+      <div class="input-group hidden" id="surnameGroup">
         <label for="surname">Surname</label>
-        <input type="text" id="surname" required placeholder="Enter your surname">
+        <input type="text" id="surname" placeholder="Enter your surname" />
       </div>
 
-      <div class="input-group">
+      <div class="input-group" id="emailGroup">
         <label for="email">Email</label>
-        <input type="email" id="email" required placeholder="Enter your email">
+        <input type="email" id="email" required placeholder="Enter your email" />
       </div>
 
-      <div class="input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" required placeholder="Enter your password">
+      <!-- Email Verification Section (for students only) -->
+      <div class="input-group hidden" id="emailVerificationGroup">
+        <button type="button" id="sendCodeBtn" style="margin-bottom:10px;">Send Verification Code</button>
+        <input type="text" id="verificationCode" placeholder="Enter verification code" />
+        <button type="button" id="verifyCodeBtn" style="margin-top:10px;">Verify Code</button>
+        <p id="verificationMessage" style="color: red; display: none; margin-top: 10px;"></p>
+      </div>
+
+      <!-- New Password Section (hidden initially) -->
+      <div class="input-group hidden" id="newPasswordGroup">
+        <label for="newPassword">New Password</label>
+        <input type="password" id="newPassword" placeholder="Enter your new password" />
         <ul class="password-rules">
           <li>8–16 characters</li>
           <li>At least 1 uppercase letter</li>
@@ -44,19 +207,59 @@
         <div id="strength-indicator">Strength: <span id="strength-text">-</span></div>
       </div>
 
-      <div class="input-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" required placeholder="Re-enter your password">
+      <div class="input-group hidden" id="confirmNewPasswordGroup">
+        <label for="confirmNewPassword">Confirm New Password</label>
+        <input type="password" id="confirmNewPassword" placeholder="Re-enter your new password" />
       </div>
+
+      <div class="input-group hidden" id="idNumberGroup">
+        <label for="idNumber">South African ID Number</label>
+        <input type="text" id="idNumber" placeholder="Enter your SA ID number" maxlength="13" />
+      </div>
+
+      <div class="input-group hidden" id="phoneGroup">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="Enter your phone number" />
+      </div>
+
+      <div class="input-group hidden" id="ageGroup">
+        <label for="age">Age</label>
+        <input type="number" id="age" placeholder="Enter your age" min="1" max="120" />
+      </div>
+
+      <div class="input-group hidden" id="passwordGroup">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" />
+        <ul class="password-rules">
+          <li>8–16 characters</li>
+          <li>At least 1 uppercase letter</li>
+          <li>At least 3 lowercase letters</li>
+        </ul>
+        <div id="strength-indicator">Strength: <span id="strength-text">-</span></div>
+      </div>
+
+      <div class="input-group hidden" id="confirmPasswordGroup">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" placeholder="Re-enter your password" />
+      </div>
+
+      <div class="input-group hidden" id="subjectGroup">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" placeholder="Enter subject you teach" />
+      </div>
+
+      <div class="input-group hidden" id="altSubjectGroup">
+        <label for="altSubject">Alternative Subject (optional)</label>
+        <input type="text" id="altSubject" placeholder="Enter alternative subject you teach" />
+      </div>
+
+      <p id="error-message"></p>
 
       <button type="submit">Create Account</button>
-      <div class="text-center mt-3">
+
+      <div class="text-center">
         <p>Already have an account? <a href="login.html">Login</a></p>
       </div>
-      <p id="error-message"></p>
-      <p id="error-message" style="color: red; font-weight: bold;"></p>
-      <p id="strength-text" style="font-size: 14px;"></p>
-
     </form>
   </div>
   <script src="accountForm.js"></script>
